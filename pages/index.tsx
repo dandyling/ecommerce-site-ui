@@ -1,6 +1,7 @@
 import Head from "next/head";
-import styles from "../styles/Home.module.scss";
+import styles from "../styles/index.module.scss";
 import Header from "./../components/header";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -10,7 +11,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main className={styles.main}>Aws</main>
+      <main className={styles.main}>
+        <Image
+          layout="intrinsic"
+          width={1899}
+          height={532}
+          src="/images/cover-image.jpg"
+          alt="Women fashion"
+        />
+      </main>
 
       <footer className={styles.footer}>
         <a

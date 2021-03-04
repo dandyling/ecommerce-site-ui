@@ -24,20 +24,23 @@ export const Header = () => {
       </div>
       <div className={styles.middlebar}>
         <div className={styles.middlebar__left}>
-          <h1 className={styles.middlebar__item}>Blizoo.</h1>
+          <h1 className={styles.middlebar__brand}>Blizoo.</h1>
           <FontAwesomeIcon className={styles.middlebar__icon} icon={faSearch} />
         </div>
         <div className={styles.middlebar__right}>
           <a className={styles.middlebar__item} href="#">
-            Man's'
+            Man's
           </a>
           <a className={styles.middlebar__item} href="#">
-            Women's'
+            Women's
           </a>
           <FontAwesomeIcon className={styles.middlebar__icon} icon={faHeart} />
           <FontAwesomeIcon className={styles.middlebar__icon} icon={faUser} />
           <button className={styles.middlebar__button}>
-            <FontAwesomeIcon className={styles.middlebar__icon} icon={faLock} />
+            <FontAwesomeIcon
+              className={styles.middlebar__symbol}
+              icon={faLock}
+            />
             Cart (0)
           </button>
         </div>
