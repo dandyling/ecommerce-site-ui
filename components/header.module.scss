@@ -30,9 +30,9 @@
   justify-content: space-between;
   align-items: center;
   padding: tokens.$space-tiny tokens.$space-large;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+  border-top: tokens.$border;
+  border-bottom: tokens.$border;
+  box-shadow: tokens.$shadow;
 }
 
 .middlebar__brand {
@@ -46,6 +46,7 @@
 
 .middlebar__left {
   display: flex;
+  align-items: center;
 }
 
 .middlebar__icon {

@@ -18,6 +18,12 @@
   align-items: center;
 }
 
+.main__gallery {
+  padding: tokens.$space-medium tokens.$space-large;
+  width: 100%;
+  background-color: tokens.$color-background-white;
+}
+
 .footer {
   width: 100%;
   height: 100px;

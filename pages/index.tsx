@@ -1,9 +1,24 @@
 import Head from "next/head";
 import styles from "../styles/index.module.scss";
 import Header from "./../components/header";
+import Gallery from "./../components/gallery";
 import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { Product } from "./api/products";
 
 export default function Home() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const fetchProducts = async () => {
+    const res: any = await fetch("/api/products");
+    const items: Product[] = await res.json();
+    setProducts(items);
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -19,6 +34,9 @@ export default function Home() {
           src="/images/cover-image.jpg"
           alt="Women fashion"
         />
+        <div className={styles.main__gallery}>
+          <Gallery products={products} />
+        </div>
       </main>
 
       <footer className={styles.footer}>

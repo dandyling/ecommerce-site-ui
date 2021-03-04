@@ -1,0 +1,59 @@
+@use "./../styles/tokens";
+
+.gallery {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: auto;
+  grid-gap: tokens.$space-large;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: tokens.$color-panel;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: tokens.$shadow;
+}
+
+.card__image {
+  width: 100%;
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 24px;
+}
+
+.card__content {
+  padding: tokens.$space-tiny;
+}
+
+.card__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__description {
+  font-family: tokens.$font-secondary;
+}
+
+.card__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  min-width: 80px;
+  margin-left: tokens.$space-tiny;
+}
+
+.card__current {
+  color: tokens.$color-accent;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.card__original {
+  color: tokens.$color-gray-text;
+  font-size: 0.75rem;
+  text-decoration: line-through;
+}
