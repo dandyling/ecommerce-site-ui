@@ -18,20 +18,38 @@
   box-shadow: tokens.$shadow;
 }
 
+.card__photo {
+  position: relative;
+  cursor: pointer;
+}
+
 .card__image {
   width: 100%;
   position: relative;
-  aspect-ratio: 1 / 1;
   border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.card__discount {
+  color: tokens.$color-white;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.card__favorite {
+  font-size: 24px;
 }
 
 .card__content {
-  padding: tokens.$space-tiny;
+  padding: tokens.$space-small;
 }
 
 .card__top {
   display: flex;
   justify-content: space-between;
+  min-height: 60px;
+  cursor: pointer;
 }
 
 .card__description {
@@ -49,11 +67,52 @@
 .card__current {
   color: tokens.$color-accent;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .card__original {
   color: tokens.$color-gray-text;
-  font-size: 0.75rem;
+  font-weight: 700;
+  font-size: 0.8rem;
   text-decoration: line-through;
+}
+
+.card__middle {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: tokens.$space-tiny;
+}
+
+.card__bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__rating {
+  display: flex;
+  align-items: center;
+  color: tokens.$color-gray-text;
+}
+
+.card__icon {
+  font-size: 14px;
+  margin-right: tokens.$space-xtiny;
+}
+
+.card__number {
+  font-weight: 600;
+}
+
+.card__cta {
+  color: tokens.$color-brand;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.card__add {
+  margin: 0 tokens.$space-tiny;
+  font-size: 11px;
 }

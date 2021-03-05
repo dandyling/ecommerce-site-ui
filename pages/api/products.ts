@@ -1,15 +1,19 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-export type ColorType = "Pink" | "Blue" | "Beige" | "Gray" | "Black" | "Orange"
+export type ColorType = "Pink" | "Blue" | "Beige" | "Gray" | "Black" | "Orange" | "Brand" | "Panel" | "Accent" | "White"
 
 export type ProductType = "Clothes" | "Shoes"
 
 export const Color: Record<ColorType, string> = {
-  Pink: "#f904af",
-  Blue: "#0991f7",
-  Beige: "#f1ece8",
+  Pink: "#ff00b1",
+  Blue: "#0091ff",
+  Beige: "#f3ebe9",
   Gray: "#5c6780",
   Black: "#2d303f",
   Orange: "#fb484d",
+  Brand: "#7820fa",
+  Panel: "#feffff",
+  Accent: "#fc3c3e",
+  White: "rgb(252, 255, 255)"
 }
 
 export type ClothesSize = "S" | "M" | "L"
@@ -27,8 +31,10 @@ export interface Product {
   brand: string;
   price: number;
   originalPrice: number;
-  colors: ColorType[]
-  sizes: ClothesSize[] | ShoesSize[]
+  colors: ColorType[];
+  colorIndex: number;
+  sizes: ClothesSize[] | ShoesSize[];
+  sizeIndex: number;
 }
 
 const products: Product[] = [{
@@ -48,7 +54,9 @@ const products: Product[] = [{
   price: 3.99,
   originalPrice: 5.99,
   colors: ["Beige", "Pink", "Blue"],
-  sizes: ["S", "M", "L"]
+  sizes: ["S", "M", "L"],
+  colorIndex: 0,
+  sizeIndex: 0,
 }, {
   name: "Long Sleeve Denim Jacket",
   type: "Clothes",
@@ -67,7 +75,9 @@ const products: Product[] = [{
   price: 3.99,
   originalPrice: 5.99,
   colors: ["Gray", "Black"],
-  sizes: ["M", "L"]
+  sizes: ["M", "L"],
+  colorIndex: 0,
+  sizeIndex: 0,
 }, {
   name: "Hush Puppies",
   type: "Shoes",
@@ -85,7 +95,9 @@ const products: Product[] = [{
   price: 3.99,
   originalPrice: 5.99,
   colors: ["Beige", "Black", "Orange"],
-  sizes: ["38", "39", "40", "41"]
+  sizes: ["41", "40", "39", "38"],
+  colorIndex: 0,
+  sizeIndex: 0,
 }, {
   name: "Athens Skirt",
   type: "Clothes",
@@ -102,7 +114,9 @@ const products: Product[] = [{
   price: 3.99,
   originalPrice: 5.99,
   colors: ["Beige", "Pink", "Blue"],
-  sizes: ["S", "M", "L"]
+  sizes: ["S", "M", "L"],
+  colorIndex: 0,
+  sizeIndex: 0,
 },]
 
 export default (req, res) => {
