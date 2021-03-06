@@ -5,6 +5,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Countdown } from "../components/countdown";
 import CouponsPanel from "../components/coupons-panel";
+import ProductPopup from "../components/product-popup";
 import { TabBar } from "../components/tabbar";
 import styles from "../styles/index.module.scss";
 import Gallery from "./../components/gallery";
@@ -16,6 +17,8 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [tab, setTab] = useState(0);
+  const [showProduct, setShowProduct] = useState(true);
+  const [product, setProduct] = useState<Product>(null);
 
   const fetchProducts = async () => {
     const res: any = await fetch("/api/products");
@@ -36,6 +39,15 @@ export default function Home() {
 
   const handleTabChange = (i: number) => {
     setTab(i);
+  };
+
+  const toggleProductDialog = () => {
+    setShowProduct((value) => !value);
+  };
+
+  const handleClick = (p: Product) => {
+    setProduct(p);
+    setShowProduct(true);
   };
 
   return (
@@ -61,7 +73,7 @@ export default function Home() {
             <h2 className={styles.main__flashtitle}>Flash Sale</h2>
             <Countdown />
           </div>
-          <Gallery products={products} />
+          <Gallery onClick={handleClick} products={products} />
         </section>
         <section className={styles.main__segment}>
           <a href="#" className={styles.main__expand}>
@@ -80,7 +92,7 @@ export default function Home() {
               All Product
             </a>
           </div>
-          <Gallery products={products} />
+          <Gallery onClick={handleClick} products={products} />
         </section>
       </main>
       <footer className={styles.footer}>
@@ -93,6 +105,9 @@ export default function Home() {
           Copyright by Blizoo.
         </a>
       </footer>
+      {showProduct && product && (
+        <ProductPopup product={product} onClose={toggleProductDialog} />
+      )}
     </div>
   );
 }

@@ -1,29 +1,34 @@
-import { Color, Product } from "../pages/api/products";
-import styles from "./gallery.module.scss";
-import Image from "next/image";
-import { ColorsPanel } from "./colors-panel";
-import SizesPanel from "./sizes-panel";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart, faStar } from "@fortawesome/free-regular-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Color, Product } from "../pages/api/products";
 import Badge from "./badge";
 import Circle from "./circle";
+import { ColorsPanel } from "./colors-panel";
+import styles from "./gallery.module.scss";
+import Photo from "./photo";
+import SizesPanel from "./sizes-panel";
 
 interface Props {
   products: Product[];
+  onClick(product: Product): void;
 }
 
-export const Gallery = ({ products }: Props) => {
+export const Gallery = ({ products, onClick }: Props) => {
   return (
     <ul className={styles.gallery}>
       {products.map((p, i) => {
         return (
-          <li className={styles.card} key={`${i}-${p.name}`}>
+          <li
+            className={styles.card}
+            onClick={() => onClick(p)}
+            key={`${i}-${p.name}`}
+          >
             <div className={styles.card__photo}>
               <div className={styles.card__image}>
-                <Image
-                  objectFit="cover"
-                  layout="fill"
+                <Photo
+                  aspectRatio="1 / 1"
+                  width="100%"
                   src={p.images[p.coverIndex]}
                   alt={p.name}
                 />
