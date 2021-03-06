@@ -58,25 +58,14 @@
   cursor: pointer;
 }
 
-.middlebar__symbol {
-  font-size: 1.4rem;
-  margin-right: tokens.$space-tiny;
-}
-
 .middlebar__right {
   display: flex;
   align-items: center;
 }
 
-.middlebar__button {
-  display: flex;
-  align-items: center;
-  background-color: tokens.$color-brand;
-  color: tokens.$color-white;
-  padding: tokens.$space-tiny tokens.$space-small;
-  border-radius: 12px;
-  border-style: none;
-  cursor: pointer;
+.middlebar__symbol {
+  font-size: 1.4rem;
+  margin-right: tokens.$space-tiny;
 }
 
 .nav {

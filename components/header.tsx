@@ -1,9 +1,22 @@
-import { faLock, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
+import { faLock, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Cart } from "../pages";
+import Button from "./button";
 import styles from "./header.module.scss";
 
-export const Header = () => {
+interface Props {
+  cart: Cart;
+}
+
+export const Header = (props: Props) => {
+  const { cart } = props;
+
+  const quantity = Object.values(cart).reduce((sum, q) => {
+    sum += q;
+    return sum;
+  }, 0);
+
   return (
     <header className={styles.header}>
       <div className={styles.toolbar}>
@@ -38,13 +51,13 @@ export const Header = () => {
           </a>
           <FontAwesomeIcon className={styles.middlebar__icon} icon={faHeart} />
           <FontAwesomeIcon className={styles.middlebar__icon} icon={faUser} />
-          <button className={styles.middlebar__button}>
+          <Button onClick={console.log}>
             <FontAwesomeIcon
               className={styles.middlebar__symbol}
               icon={faLock}
             />
-            Cart (0)
-          </button>
+            Cart ({quantity})
+          </Button>
         </div>
       </div>
       <nav className={styles.nav}>

@@ -1,0 +1,37 @@
+@use "./../styles/tokens";
+
+.button__primary {
+  display: flex;
+  align-items: center;
+  background-color: tokens.$color-brand;
+  color: tokens.$color-white;
+  padding: tokens.$space-tiny tokens.$space-small;
+  border-radius: 8px;
+  border-style: none;
+  cursor: pointer;
+}
+
+.button__light {
+  display: flex;
+  align-items: center;
+  background-color: tokens.$color-white;
+  color: tokens.$color-brand;
+  padding: tokens.$space-tiny tokens.$space-small;
+  border-radius: 8px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: tokens.$color-brand;
+  cursor: pointer;
+}
+
+.button__text {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  color: tokens.$color-brand;
+  text-transform: uppercase;
+  padding: tokens.$space-tiny;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}

@@ -13,12 +13,20 @@ import Header from "./../components/header";
 import { Coupon } from "./api/coupons";
 import { Product } from "./api/products";
 
+export interface Cart {
+  [id: string]: number;
+}
+export interface Favorites {
+  [id: string]: boolean;
+}
+
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [coupons, setCoupons] = useState<Coupon[]>([]);
   const [tab, setTab] = useState(0);
   const [showProduct, setShowProduct] = useState(true);
   const [product, setProduct] = useState<Product>(null);
+  const [cart, setCart] = useState<Cart>({});
 
   const fetchProducts = async () => {
     const res: any = await fetch("/api/products");
@@ -56,7 +64,7 @@ export default function Home() {
         <title>Blizoo. Ecommerce</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Header cart={cart} />
       <main className={styles.main}>
         <section className={styles.main__carousel}>
           <Image
@@ -73,7 +81,11 @@ export default function Home() {
             <h2 className={styles.main__flashtitle}>Flash Sale</h2>
             <Countdown />
           </div>
-          <Gallery onClick={handleClick} products={products} />
+          <Gallery
+            setCart={setCart}
+            onClick={handleClick}
+            products={products}
+          />
         </section>
         <section className={styles.main__segment}>
           <a href="#" className={styles.main__expand}>
@@ -92,7 +104,11 @@ export default function Home() {
               All Product
             </a>
           </div>
-          <Gallery onClick={handleClick} products={products} />
+          <Gallery
+            setCart={setCart}
+            onClick={handleClick}
+            products={products}
+          />
         </section>
       </main>
       <footer className={styles.footer}>
@@ -106,7 +122,11 @@ export default function Home() {
         </a>
       </footer>
       {showProduct && product && (
-        <ProductPopup product={product} onClose={toggleProductDialog} />
+        <ProductPopup
+          product={product}
+          onClose={toggleProductDialog}
+          setCart={setCart}
+        />
       )}
     </div>
   );

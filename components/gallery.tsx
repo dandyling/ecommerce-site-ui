@@ -1,10 +1,10 @@
-import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Color, Product } from "../pages/api/products";
+import { Product } from "../pages/api/products";
 import Badge from "./badge";
-import Circle from "./circle";
+import Button from "./button";
 import { ColorsPanel } from "./colors-panel";
+import { FavoriteButton } from "./favorite-button";
 import styles from "./gallery.module.scss";
 import Photo from "./photo";
 import Price from "./price";
@@ -14,20 +14,30 @@ import SizesPanel from "./sizes-panel";
 interface Props {
   products: Product[];
   onClick(product: Product): void;
+  setCart(any): void;
 }
 
-export const Gallery = ({ products, onClick }: Props) => {
+export const Gallery = (props: Props) => {
+  const { products, onClick, setCart } = props;
+
+  const handleAddCart = (p: Product) => {
+    setCart((value) => {
+      if (!value[p.id]) {
+        value[p.id] = 1;
+      } else {
+        value[p.id] += 1;
+      }
+      return { ...value };
+    });
+  };
+
   return (
     <ul className={styles.gallery}>
       {products.map((p, i) => {
         return (
-          <li
-            className={styles.card}
-            onClick={() => onClick(p)}
-            key={`${i}-${p.name}`}
-          >
+          <li className={styles.card} key={`${i}-${p.name}`}>
             <div className={styles.card__photo}>
-              <div className={styles.card__image}>
+              <div onClick={() => onClick(p)} className={styles.card__image}>
                 <Photo
                   aspectRatio="1 / 1"
                   width="100%"
@@ -38,24 +48,17 @@ export const Gallery = ({ products, onClick }: Props) => {
               <Badge style={{ position: "absolute", top: 25, left: 30 }}>
                 <p className={styles.card__discount}>-{p.discount * 100} %</p>
               </Badge>
-              <Circle
-                color={Color.White}
-                radius={20}
+              <FavoriteButton
+                onClick={console.log}
                 style={{
                   position: "absolute",
                   right: 25,
                   top: 20,
-                  boxShadow: "4px 2px 5px 5px rgba(0, 0, 0, 0.05)",
                 }}
-              >
-                <FontAwesomeIcon
-                  className={styles.card__favorite}
-                  icon={faHeart}
-                />
-              </Circle>
+              />
             </div>
             <div className={styles.card__content}>
-              <div className={styles.card__top}>
+              <div onClick={() => onClick(p)} className={styles.card__top}>
                 <h3 className={styles.card__description}>{p.name}</h3>
                 <div className={styles.card__price}>
                   <Price value={p.price} />
@@ -68,10 +71,15 @@ export const Gallery = ({ products, onClick }: Props) => {
               </div>
               <div className={styles.card__bottom}>
                 <ProductRating value={p.rating} />
-                <div className={styles.card__cta}>
-                  BUY
-                  <FontAwesomeIcon icon={faPlus} className={styles.card__add} />
-                </div>
+                <Button variant="text" onClick={() => handleAddCart(p)}>
+                  <div className={styles.card__cta}>
+                    <p>BUY</p>
+                    <FontAwesomeIcon
+                      icon={faPlus}
+                      className={styles.card__add}
+                    />
+                  </div>
+                </Button>
               </div>
             </div>
           </li>

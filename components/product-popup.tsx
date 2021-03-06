@@ -9,22 +9,38 @@ import Price from "./price";
 import styles from "./product-popup.module.scss";
 import ProductRating from "./product-rating";
 import SizesPanel from "./sizes-panel";
+import Button from "./button";
+import { FavoriteButton } from "./favorite-button";
 
 interface Props {
   product: Product;
   onClose(): void;
+  setCart(any): void;
 }
 
 export const ProductPopup = (props: Props) => {
-  const { product, onClose } = props;
+  const { product, onClose, setCart } = props;
   const [colorIndex, setColorIndex] = useState(0);
   const [sizeIndex, setSizeIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
   const color = product.colors[colorIndex];
 
+  const handleAddCart = () => {
+    setCart((value) => {
+      if (!value[product.id]) {
+        value[product.id] = quantity;
+      } else {
+        value[product.id] += quantity;
+      }
+      return { ...value };
+    });
+
+    onClose();
+  };
+
   return (
-    <Modal width={800} height={600} onClose={onClose}>
+    <Modal width={"auto"} height={"auto"} onClose={onClose}>
       <div className={styles.product}>
         <PhotosPanel images={product.images} alt={product.name} />
         <div className={styles.product__details}>
@@ -88,6 +104,13 @@ export const ProductPopup = (props: Props) => {
               onIncrement={() => setQuantity((value) => value + 1)}
               onDecrement={() => setQuantity((value) => value - 1)}
             />
+          </div>
+          <div className={styles.product__cta}>
+            <FavoriteButton onClick={console.log} />
+            <Button onClick={handleAddCart} variant="light">
+              Add to cart
+            </Button>
+            <Button onClick={handleAddCart}>Buy Now</Button>
           </div>
         </div>
       </div>

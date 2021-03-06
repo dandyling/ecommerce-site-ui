@@ -12,11 +12,17 @@ interface Props {
 export const NumericInput = (props: Props) => {
   const { value, onChange, onIncrement, onDecrement } = props;
 
+  const handleDecrement = () => {
+    if (value > 1) {
+      onDecrement();
+    }
+  };
+
   return (
     <div className={styles.input}>
       <input step={1} min={1} type="number" value={value} onChange={onChange} />
       <IconButton icon={faPlus} onClick={onIncrement} />
-      <IconButton icon={faMinus} onClick={onDecrement} />
+      <IconButton icon={faMinus} onClick={handleDecrement} />
     </div>
   );
 };

@@ -21,6 +21,7 @@ export type ClothesSize = "S" | "M" | "L"
 export type ShoesSize = "38" | "39" | "40" | "41" | "42"
 
 export interface Product {
+  id: string;
   name: string;
   type: ProductType;
   images: string[];
@@ -38,6 +39,7 @@ export interface Product {
 }
 
 const products: Product[] = [{
+  id: "bcd23170-ee66-418f-ad2f-4b547b67aea1",
   name: "White Traditional Long Dress",
   type: "Clothes",
   images: [
@@ -58,6 +60,7 @@ const products: Product[] = [{
   colorIndex: 0,
   sizeIndex: 0,
 }, {
+  id: "4ff34c07-97bf-46e9-be80-ee48fd185f89",
   name: "Long Sleeve Denim Jacket",
   type: "Clothes",
   images: [
@@ -79,6 +82,7 @@ const products: Product[] = [{
   colorIndex: 0,
   sizeIndex: 0,
 }, {
+  id: "c6c8d239-812f-4e94-b63d-e9ffb5d7b185",
   name: "Hush Puppies",
   type: "Shoes",
   images: [
@@ -99,6 +103,7 @@ const products: Product[] = [{
   colorIndex: 0,
   sizeIndex: 0,
 }, {
+  id: "a3124db9-98d1-4105-be22-3c6f180e383b",
   name: "Athens Skirt",
   type: "Clothes",
   images: [
