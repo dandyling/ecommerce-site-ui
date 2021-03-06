@@ -1,21 +1,12 @@
 import { faHeart, faUser } from "@fortawesome/free-regular-svg-icons";
 import { faLock, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Cart } from "../pages";
 import Button from "./button";
 import styles from "./header.module.scss";
+import useStore from "./store/store";
 
-interface Props {
-  cart: Cart;
-}
-
-export const Header = (props: Props) => {
-  const { cart } = props;
-
-  const quantity = Object.values(cart).reduce((sum, q) => {
-    sum += q;
-    return sum;
-  }, 0);
+export const Header = () => {
+  const { quantity } = useStore();
 
   return (
     <header className={styles.header}>

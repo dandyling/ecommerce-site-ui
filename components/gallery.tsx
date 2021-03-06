@@ -10,27 +10,16 @@ import Photo from "./photo";
 import Price from "./price";
 import ProductRating from "./product-rating";
 import SizesPanel from "./sizes-panel";
+import useStore from "./store/store";
 
 interface Props {
   products: Product[];
   onClick(product: Product): void;
-  setCart(any): void;
 }
 
 export const Gallery = (props: Props) => {
-  const { products, onClick, setCart } = props;
-
-  const handleAddCart = (p: Product) => {
-    setCart((value) => {
-      if (!value[p.id]) {
-        value[p.id] = 1;
-      } else {
-        value[p.id] += 1;
-      }
-      return { ...value };
-    });
-  };
-
+  const { products, onClick } = props;
+  const { handleAddCart } = useStore();
   return (
     <ul className={styles.gallery}>
       {products.map((p, i) => {
@@ -71,7 +60,7 @@ export const Gallery = (props: Props) => {
               </div>
               <div className={styles.card__bottom}>
                 <ProductRating value={p.rating} />
-                <Button variant="text" onClick={() => handleAddCart(p)}>
+                <Button variant="text" onClick={() => handleAddCart(p, 1)}>
                   <div className={styles.card__cta}>
                     <p>BUY</p>
                     <FontAwesomeIcon

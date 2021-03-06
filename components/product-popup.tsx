@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Product } from "../pages/api/products";
 import Badge from "./badge";
+import Button from "./button";
 import ColorsPanel from "./colors-panel";
+import { FavoriteButton } from "./favorite-button";
 import Modal from "./modal";
 import { NumericInput } from "./numeric-input";
 import { PhotosPanel } from "./photos-panel";
@@ -9,33 +11,23 @@ import Price from "./price";
 import styles from "./product-popup.module.scss";
 import ProductRating from "./product-rating";
 import SizesPanel from "./sizes-panel";
-import Button from "./button";
-import { FavoriteButton } from "./favorite-button";
+import useStore from "./store/store";
 
 interface Props {
   product: Product;
   onClose(): void;
-  setCart(any): void;
 }
 
 export const ProductPopup = (props: Props) => {
-  const { product, onClose, setCart } = props;
+  const { product, onClose } = props;
   const [colorIndex, setColorIndex] = useState(0);
   const [sizeIndex, setSizeIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
-
+  const { handleAddCart } = useStore();
   const color = product.colors[colorIndex];
 
-  const handleAddCart = () => {
-    setCart((value) => {
-      if (!value[product.id]) {
-        value[product.id] = quantity;
-      } else {
-        value[product.id] += quantity;
-      }
-      return { ...value };
-    });
-
+  const handleAdd = () => {
+    handleAddCart(product, quantity);
     onClose();
   };
 
@@ -107,10 +99,10 @@ export const ProductPopup = (props: Props) => {
           </div>
           <div className={styles.product__cta}>
             <FavoriteButton onClick={console.log} />
-            <Button onClick={handleAddCart} variant="light">
+            <Button onClick={handleAdd} variant="light">
               Add to cart
             </Button>
-            <Button onClick={handleAddCart}>Buy Now</Button>
+            <Button onClick={handleAdd}>Buy Now</Button>
           </div>
         </div>
       </div>
