@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 import { Countdown } from "../components/countdown";
 import CouponsPanel from "../components/coupons-panel";
 import ProductPopup from "../components/product-popup";
-import { Store } from "../components/store/store";
+import { StoreProvider } from "../components/store/store";
 import { TabBar } from "../components/tabbar";
 import styles from "../styles/index.module.scss";
 import Gallery from "./../components/gallery";
@@ -52,7 +52,7 @@ export default function Home() {
   };
 
   return (
-    <Store>
+    <StoreProvider>
       <div className={styles.container}>
         <Head>
           <title>Blizoo. Ecommerce</title>
@@ -114,6 +114,6 @@ export default function Home() {
           <ProductPopup product={product} onClose={toggleProductDialog} />
         )}
       </div>
-    </Store>
+    </StoreProvider>
   );
 }

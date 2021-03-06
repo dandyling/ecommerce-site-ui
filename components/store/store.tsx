@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Product } from "../../pages/api/products";
 
 export interface Cart {
@@ -14,8 +14,14 @@ interface StoreValue {
 const storeContext = createContext<StoreValue>(null);
 const { Provider } = storeContext;
 
-export const Store = ({ children }) => {
+export const StoreProvider = ({ children }) => {
   const [cart, setCart] = useState<Cart>({});
+
+  useEffect(() => {
+    const initialCart = JSON.parse(localStorage.getItem("cart")) ?? {};
+    setCart(initialCart);
+  }, []);
+
   const quantity = Object.values(cart).reduce((sum, q) => {
     sum += q;
     return sum;
@@ -28,6 +34,7 @@ export const Store = ({ children }) => {
       } else {
         value[p.id] += quantity;
       }
+      localStorage.setItem("cart", JSON.stringify(value));
       return { ...value };
     });
   };

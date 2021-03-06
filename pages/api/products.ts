@@ -124,6 +124,8 @@ const products: Product[] = [{
   sizeIndex: 0,
 },]
 
-export default (req, res) => {
+const fetch = (req, res) => {
   res.status(200).json(products)
 }
+
+export default fetch
