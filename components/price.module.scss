@@ -1,0 +1,14 @@
+@use "./../styles/tokens";
+
+.primary {
+  color: tokens.$color-accent;
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.strikethrough {
+  color: tokens.$color-gray-text;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-decoration: line-through;
+}

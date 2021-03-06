@@ -61,19 +61,6 @@
   margin-left: tokens.$space-tiny;
 }
 
-.card__current {
-  color: tokens.$color-accent;
-  font-weight: 700;
-  font-size: 1.3rem;
-}
-
-.card__original {
-  color: tokens.$color-gray-text;
-  font-weight: 700;
-  font-size: 0.8rem;
-  text-decoration: line-through;
-}
-
 .card__middle {
   display: flex;
   justify-content: space-between;
@@ -83,21 +70,6 @@
 .card__bottom {
   display: flex;
   justify-content: space-between;
-}
-
-.card__rating {
-  display: flex;
-  align-items: center;
-  color: tokens.$color-gray-text;
-}
-
-.card__icon {
-  font-size: 14px;
-  margin-right: tokens.$space-xtiny;
-}
-
-.card__number {
-  font-weight: 600;
 }
 
 .card__cta {

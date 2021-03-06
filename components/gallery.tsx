@@ -1,4 +1,4 @@
-import { faHeart, faStar } from "@fortawesome/free-regular-svg-icons";
+import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Color, Product } from "../pages/api/products";
@@ -7,6 +7,8 @@ import Circle from "./circle";
 import { ColorsPanel } from "./colors-panel";
 import styles from "./gallery.module.scss";
 import Photo from "./photo";
+import Price from "./price";
+import ProductRating from "./product-rating";
 import SizesPanel from "./sizes-panel";
 
 interface Props {
@@ -56,8 +58,8 @@ export const Gallery = ({ products, onClick }: Props) => {
               <div className={styles.card__top}>
                 <h3 className={styles.card__description}>{p.name}</h3>
                 <div className={styles.card__price}>
-                  <p className={styles.card__current}>$ {p.price}</p>
-                  <p className={styles.card__original}>$ {p.originalPrice}</p>
+                  <Price value={p.price} />
+                  <Price value={p.originalPrice} variant="strikethrough" />
                 </div>
               </div>
               <div className={styles.card__middle}>
@@ -65,13 +67,7 @@ export const Gallery = ({ products, onClick }: Props) => {
                 <SizesPanel sizes={p.sizes} selected={p.sizeIndex} />
               </div>
               <div className={styles.card__bottom}>
-                <div className={styles.card__rating}>
-                  <FontAwesomeIcon
-                    className={styles.card__icon}
-                    icon={faStar}
-                  />
-                  <p className={styles.card__number}>{p.rating}</p>
-                </div>
+                <ProductRating value={p.rating} />
                 <div className={styles.card__cta}>
                   BUY
                   <FontAwesomeIcon icon={faPlus} className={styles.card__add} />

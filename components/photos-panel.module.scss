@@ -12,6 +12,7 @@
 
 .panel__portrait {
   min-height: 100px;
+  max-height: 400px;
   cursor: pointer;
   border: tokens.$border;
   box-shadow: tokens.$shadow;

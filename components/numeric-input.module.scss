@@ -1,0 +1,19 @@
+@use "./../styles/tokens";
+
+.input {
+  display: flex;
+}
+
+.input input {
+  display: flex;
+  border: tokens.$border;
+  box-shadow: tokens.$shadow;
+  padding-left: tokens.$space-small;
+  border-radius: tokens.$space-tiny;
+  background-color: tokens.$color-input-background;
+  outline: none;
+}
+
+.input > *:not(:last-child) {
+  margin-right: tokens.$space-tiny;
+}

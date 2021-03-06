@@ -1,0 +1,16 @@
+@use "./../styles/tokens";
+
+.rating {
+  display: flex;
+  align-items: center;
+  color: tokens.$color-gray-text;
+}
+
+.rating__icon {
+  font-size: 14px;
+  margin-right: tokens.$space-xtiny;
+}
+
+.rating__value {
+  font-weight: 600;
+}
