@@ -24,9 +24,42 @@
 }
 
 .main__segment {
+  display: flex;
+  flex-direction: column;
   padding: tokens.$space-medium tokens.$space-large;
   width: 100%;
   background-color: tokens.$color-background-white;
+}
+
+.main__flashsale {
+  display: flex;
+  align-items: center;
+  margin: tokens.$space-medium tokens.$space-tiny;
+}
+
+.main__lightning {
+  font-size: 1.4rem;
+  margin-right: tokens.$space-tiny;
+}
+
+.main__flashtitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-right: tokens.$space-tiny;
+}
+
+.main__expand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-left: auto;
+  margin-bottom: tokens.$space-small;
+  color: tokens.$color-brand;
+}
+
+.main__products {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: tokens.$space-small;
 }
 
 .footer {

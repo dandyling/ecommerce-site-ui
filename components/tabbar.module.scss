@@ -1,0 +1,28 @@
+@use "./../styles/tokens";
+
+.tabs {
+  display: flex;
+  font-weight: 600;
+  font-size: 1.2rem;
+  list-style: none;
+}
+
+.tabs__item {
+  margin-right: tokens.$space-small;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.tabs__name {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.tabs__underline {
+  width: 100%;
+  height: 3px;
+  margin-top: 2px;
+  background-color: tokens.$color-brand;
+  box-shadow: tokens.$shadow;
+}

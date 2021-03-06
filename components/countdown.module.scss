@@ -1,0 +1,11 @@
+@use "./../styles/tokens";
+
+.countdown {
+  display: flex;
+}
+
+.countdown__time {
+  color: tokens.$color-white;
+  font-size: 1.15rem;
+  font-weight: 500;
+}

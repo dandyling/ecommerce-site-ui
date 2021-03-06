@@ -13,6 +13,8 @@
 .toolbar {
   display: flex;
   justify-content: flex-end;
+  font-size: 0.9rem;
+  font-weight: 500;
   padding: tokens.$space-tiny tokens.$space-large;
 }
 
@@ -33,15 +35,16 @@
   border-top: tokens.$border;
   border-bottom: tokens.$border;
   box-shadow: tokens.$shadow;
+  font-weight: 500;
 }
 
 .middlebar__brand {
-  margin-right: tokens.$space-medium;
+  margin-right: tokens.$space-large;
   color: tokens.$color-brand;
 }
 
 .middlebar__item {
-  margin-right: tokens.$space-medium;
+  margin-right: tokens.$space-large;
 }
 
 .middlebar__left {
@@ -50,12 +53,13 @@
 }
 
 .middlebar__icon {
-  width: 20px;
-  margin-right: tokens.$space-medium;
+  font-size: 1.4rem;
+  margin-right: tokens.$space-large;
+  cursor: pointer;
 }
 
 .middlebar__symbol {
-  width: 20px;
+  font-size: 1.4rem;
   margin-right: tokens.$space-tiny;
 }
 
@@ -72,10 +76,13 @@
   padding: tokens.$space-tiny tokens.$space-small;
   border-radius: 12px;
   border-style: none;
+  cursor: pointer;
 }
 
 .nav {
   padding: tokens.$space-tiny tokens.$space-large;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .nav__list {
@@ -84,5 +91,5 @@
 
 .nav__item {
   list-style: none;
-  margin-right: tokens.$space-small;
+  margin-right: tokens.$space-medium;
 }

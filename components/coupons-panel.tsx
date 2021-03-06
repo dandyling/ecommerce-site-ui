@@ -13,18 +13,20 @@ export const CouponsPanel = ({ coupons }: Props) => {
       {coupons.map((p, i) => {
         return (
           <li className={styles.coupon} key={`${i}-${p.code}`}>
-            <Badge width="100%" height={120} color={Color.White}>
-              <div className={styles.coupon__left}>
-                <p className={styles.coupon__name}>{p.name}</p>
-                <p className={styles.coupon__code}>{p.code}</p>
-              </div>
-              <div className={styles.coupon__right}>
-                <div className={styles.coupon__discount}>
-                  {p.discount * 100}%
+            <a href="#">
+              <Badge width="100%" height={120} color={Color.White}>
+                <div className={styles.coupon__left}>
+                  <p className={styles.coupon__name}>{p.name}</p>
+                  <p className={styles.coupon__code}>{p.code}</p>
                 </div>
-                <div>Off</div>
-              </div>
-            </Badge>
+                <div className={styles.coupon__right}>
+                  <div className={styles.coupon__discount}>
+                    {p.discount * 100}%
+                  </div>
+                  <div>Off</div>
+                </div>
+              </Badge>
+            </a>
           </li>
         );
       })}

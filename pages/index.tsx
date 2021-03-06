@@ -1,16 +1,21 @@
+import { faBolt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
-import styles from "../styles/index.module.scss";
-import Header from "./../components/header";
-import Gallery from "./../components/gallery";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { Product } from "./api/products";
-import { Coupon } from "./api/coupons";
+import { Countdown } from "../components/countdown";
 import CouponsPanel from "../components/coupons-panel";
+import { TabBar } from "../components/tabbar";
+import styles from "../styles/index.module.scss";
+import Gallery from "./../components/gallery";
+import Header from "./../components/header";
+import { Coupon } from "./api/coupons";
+import { Product } from "./api/products";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [coupons, setCoupons] = useState<Coupon[]>([]);
+  const [tab, setTab] = useState(0);
 
   const fetchProducts = async () => {
     const res: any = await fetch("/api/products");
@@ -28,6 +33,10 @@ export default function Home() {
     fetchProducts();
     fetchCoupons();
   }, []);
+
+  const handleTabChange = (i: number) => {
+    setTab(i);
+  };
 
   return (
     <div className={styles.container}>
@@ -47,13 +56,33 @@ export default function Home() {
           />
         </section>
         <section className={styles.main__segment}>
+          <div className={styles.main__flashsale}>
+            <FontAwesomeIcon className={styles.main__lightning} icon={faBolt} />
+            <h2 className={styles.main__flashtitle}>Flash Sale</h2>
+            <Countdown />
+          </div>
           <Gallery products={products} />
         </section>
         <section className={styles.main__segment}>
+          <a href="#" className={styles.main__expand}>
+            More Voucher
+          </a>
           <CouponsPanel coupons={coupons} />
         </section>
+        <section className={styles.main__segment}>
+          <div className={styles.main__products}>
+            <TabBar
+              onChange={handleTabChange}
+              selected={tab}
+              tabs={["Best Seller", "New Product"]}
+            />
+            <a href="#" className={styles.main__expand}>
+              All Product
+            </a>
+          </div>
+          <Gallery products={products} />
+        </section>
       </main>
-
       <footer className={styles.footer}>
         <a
           className={styles.footer__link}

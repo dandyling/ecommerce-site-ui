@@ -24,7 +24,9 @@ export const Header = () => {
       </div>
       <div className={styles.middlebar}>
         <div className={styles.middlebar__left}>
-          <h1 className={styles.middlebar__brand}>Blizoo.</h1>
+          <a href="/">
+            <h1 className={styles.middlebar__brand}>Blizoo.</h1>
+          </a>
           <FontAwesomeIcon className={styles.middlebar__icon} icon={faSearch} />
         </div>
         <div className={styles.middlebar__right}>
