@@ -18,7 +18,12 @@
   align-items: center;
 }
 
-.main__gallery {
+.main__carousel {
+  padding: 0;
+  width: 100%;
+}
+
+.main__segment {
   padding: tokens.$space-medium tokens.$space-large;
   width: 100%;
   background-color: tokens.$color-background-white;

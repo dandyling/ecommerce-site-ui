@@ -2,8 +2,8 @@ import { CSSProperties } from "react";
 import { Color } from "../pages/api/products";
 
 interface Props {
-  width?: number;
-  height?: number;
+  width?: number | string;
+  height?: number | string;
   borderRadius?: number;
   color?: string;
   style?: CSSProperties;

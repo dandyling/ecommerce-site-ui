@@ -16,9 +16,9 @@ interface Props {
 export const Gallery = ({ products }: Props) => {
   return (
     <ul className={styles.gallery}>
-      {products.map((p) => {
+      {products.map((p, i) => {
         return (
-          <li className={styles.card}>
+          <li className={styles.card} key={`${i}-${p.name}`}>
             <div className={styles.card__photo}>
               <div className={styles.card__image}>
                 <Image

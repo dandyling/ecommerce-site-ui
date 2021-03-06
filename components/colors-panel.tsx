@@ -12,7 +12,7 @@ export const ColorsPanel = (props: Props) => {
     <ul style={{ display: "flex", alignItems: "center", listStyle: "none" }}>
       {colors.map((c, i) => {
         return (
-          <li style={{ marginRight: 16 }}>
+          <li style={{ marginRight: 16 }} key={`${i}-${c}`}>
             <Circle
               borderColor={selected === i ? Color.Gray : null}
               radius={selected === i ? 9.5 : 8}

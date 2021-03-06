@@ -5,9 +5,12 @@ import Gallery from "./../components/gallery";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { Product } from "./api/products";
+import { Coupon } from "./api/coupons";
+import CouponsPanel from "../components/coupons-panel";
 
 export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [coupons, setCoupons] = useState<Coupon[]>([]);
 
   const fetchProducts = async () => {
     const res: any = await fetch("/api/products");
@@ -15,8 +18,15 @@ export default function Home() {
     setProducts(items);
   };
 
+  const fetchCoupons = async () => {
+    const res: any = await fetch("/api/coupons");
+    const items: Coupon[] = await res.json();
+    setCoupons(items);
+  };
+
   useEffect(() => {
     fetchProducts();
+    fetchCoupons();
   }, []);
 
   return (
@@ -27,16 +37,21 @@ export default function Home() {
       </Head>
       <Header />
       <main className={styles.main}>
-        <Image
-          layout="intrinsic"
-          width={1899}
-          height={532}
-          src="/images/cover-image.jpg"
-          alt="Women fashion"
-        />
-        <div className={styles.main__gallery}>
+        <section className={styles.main__carousel}>
+          <Image
+            layout="intrinsic"
+            width={1899}
+            height={532}
+            src="/images/cover-image.jpg"
+            alt="Women fashion"
+          />
+        </section>
+        <section className={styles.main__segment}>
           <Gallery products={products} />
-        </div>
+        </section>
+        <section className={styles.main__segment}>
+          <CouponsPanel coupons={coupons} />
+        </section>
       </main>
 
       <footer className={styles.footer}>

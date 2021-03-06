@@ -10,10 +10,10 @@ export const SizesPanel = (props: Props) => {
   const { sizes, selected } = props;
   return (
     <ul style={{ display: "flex", alignItems: "center", listStyle: "none" }}>
-      {sizes.map((c, i) => {
+      {sizes.map((s, i) => {
         const color = selected === i ? Color.Brand : Color.Black;
         return (
-          <li style={{ marginLeft: 8 }}>
+          <li style={{ marginLeft: 8 }} key={`${i}-${s}`}>
             <Circle borderColor={color} radius={12} color={Color.Panel}>
               <p
                 style={{
@@ -22,7 +22,7 @@ export const SizesPanel = (props: Props) => {
                   color,
                 }}
               >
-                {c}
+                {s}
               </p>
             </Circle>
           </li>
