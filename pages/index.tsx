@@ -1,42 +1,39 @@
 import { faBolt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Countdown } from "../components/countdown";
 import CouponsPanel from "../components/coupons-panel";
+import Photo from "../components/photo";
 import ProductPopup from "../components/product-popup";
 import { StoreProvider } from "../components/store/store";
 import { TabBar } from "../components/tabbar";
 import styles from "../styles/index.module.scss";
 import Gallery from "./../components/gallery";
 import Header from "./../components/header";
-import { Coupon } from "./api/coupons";
+import { products } from "./../data/products";
+import { coupons } from "./../data/coupons";
 import { Product } from "./api/products";
 
-export default function Home() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [coupons, setCoupons] = useState<Coupon[]>([]);
+export const fetchUrl = async <T extends unknown>(url: string): Promise<T> => {
+  const res: any = await fetch(url);
+  const items: T = await res.json();
+  return items;
+};
+
+export async function getStaticProps() {
+  return {
+    props: {
+      products,
+      coupons,
+    },
+  };
+}
+
+export default function Home({ products, coupons }) {
   const [tab, setTab] = useState(0);
   const [showProduct, setShowProduct] = useState(true);
   const [product, setProduct] = useState<Product>(null);
-
-  const fetchProducts = async () => {
-    const res: any = await fetch("/api/products");
-    const items: Product[] = await res.json();
-    setProducts(items);
-  };
-
-  const fetchCoupons = async () => {
-    const res: any = await fetch("/api/coupons");
-    const items: Coupon[] = await res.json();
-    setCoupons(items);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-    fetchCoupons();
-  }, []);
 
   const handleTabChange = (i: number) => {
     setTab(i);
@@ -61,12 +58,11 @@ export default function Home() {
         <Header />
         <main className={styles.main}>
           <section className={styles.main__carousel}>
-            <Image
-              layout="intrinsic"
-              width={1899}
-              height={532}
+            <Photo
+              minWidth={"100%"}
               src="/images/cover-image.jpg"
               alt="Women fashion"
+              aspectRatio="4 / 1"
             />
           </section>
           <section className={styles.main__segment}>

@@ -28,7 +28,7 @@ export const Photo = (props: Props) => {
   const allStyle = { ...defaultStyle, ...style };
   return (
     <div style={allStyle} className={styles.photo}>
-      <Image objectFit="cover" layout="fill" src={src} alt={alt} />
+      <img className={styles.photo__image} src={src} alt={alt} />
     </div>
   );
 };

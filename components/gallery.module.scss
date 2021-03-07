@@ -21,11 +21,13 @@
 .card__photo {
   position: relative;
   cursor: pointer;
+  max-width: 100%;
 }
 
 .card__image {
   border-radius: 24px;
   overflow: hidden;
+  max-width: 100%;
 }
 
 .card__discount {

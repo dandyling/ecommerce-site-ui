@@ -3,4 +3,12 @@
 .photo {
   position: relative;
   aspect-ratio: 3 / 4;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+.photo__image {
+  object-fit: cover;
+  min-width: 100%;
+  max-width: 100%;
 }
