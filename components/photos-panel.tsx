@@ -29,7 +29,12 @@ export const PhotosPanel = (props: Props) => {
               className={styleBorder}
               key={`${i}-${s}`}
             >
-              <Photo minHeight={"100px"} src={s} alt={alt} />
+              <Photo
+                minHeight={"100px"}
+                maxHeight={"100px"}
+                src={s}
+                alt={alt}
+              />
             </li>
           );
         })}

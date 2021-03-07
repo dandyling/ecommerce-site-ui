@@ -8,7 +8,9 @@ interface Props {
   width?: number | string;
   height?: number | string;
   minWidth?: number | string;
+  maxWidth?: number | string;
   minHeight?: number | string;
+  maxHeight?: number | string;
   aspectRatio?: string;
   style?: CSSProperties;
 }
@@ -21,10 +23,20 @@ export const Photo = (props: Props) => {
     height,
     minWidth,
     minHeight,
+    maxWidth,
+    maxHeight,
     aspectRatio,
     style,
   } = props;
-  const defaultStyle = { width, height, minWidth, minHeight, aspectRatio };
+  const defaultStyle = {
+    width,
+    height,
+    minWidth,
+    minHeight,
+    maxWidth,
+    maxHeight,
+    aspectRatio,
+  };
   const allStyle = { ...defaultStyle, ...style };
   return (
     <div style={allStyle} className={styles.photo}>
