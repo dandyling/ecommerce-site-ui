@@ -62,7 +62,7 @@ export default function Home({ products, coupons }) {
               minWidth={"100%"}
               src="/images/cover-image.jpg"
               alt="Women fashion"
-              aspectRatio="4 / 1"
+              aspectRatio="3.6 / 1"
             />
           </section>
           <section className={styles.main__segment}>
