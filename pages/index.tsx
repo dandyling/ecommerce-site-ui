@@ -6,7 +6,7 @@ import { Countdown } from "../components/countdown";
 import CouponsPanel from "../components/coupons-panel";
 import Photo from "../components/photo";
 import ProductPopup from "../components/product-popup";
-import { StoreProvider } from "../components/store/store";
+import { StoreProvider } from "../store/store";
 import { TabBar } from "../components/tabbar";
 import styles from "../styles/index.module.scss";
 import Gallery from "./../components/gallery";

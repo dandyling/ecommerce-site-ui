@@ -10,7 +10,7 @@ import Photo from "./photo";
 import Price from "./price";
 import ProductRating from "./product-rating";
 import SizesPanel from "./sizes-panel";
-import useStore from "./store/store";
+import useStore from "../store/store";
 
 interface Props {
   products: Product[];

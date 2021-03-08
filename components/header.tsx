@@ -3,7 +3,7 @@ import { faLock, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from "./button";
 import styles from "./header.module.scss";
-import useStore from "./store/store";
+import useStore from "../store/store";
 
 export const Header = () => {
   const { quantity } = useStore();

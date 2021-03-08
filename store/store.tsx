@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { Product } from "../../pages/api/products";
+import { Product } from "../pages/api/products";
 
 export interface Cart {
   [id: string]: number;
